@@ -11,6 +11,9 @@ import 'features/auth/providers/auth_provider.dart';
 import 'features/dashboard/data/repository/dashboard_repository.dart';
 import 'features/dashboard/data/service/dashboard_service.dart';
 import 'features/dashboard/provider/dashboard_provider.dart';
+import 'features/study/data/repository/study_repository.dart';
+import 'features/study/data/service/study_service.dart';
+import 'features/study/provider/study_provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -42,6 +45,14 @@ class MyApp extends StatelessWidget {
           create: (_) => DashboardProvider(
             repository: DashboardRepository(
               dashboardService: DashboardService(),
+            ),
+          ),
+        ),
+
+        ChangeNotifierProvider(
+          create: (_) => StudyProvider(
+            repository: StudyRepository(
+              studyService: StudyService(),
             ),
           ),
         ),
