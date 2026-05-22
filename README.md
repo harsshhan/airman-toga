@@ -71,7 +71,7 @@ Inside every individual business module under `features/`, the code is further d
 
 1. **Clone the repository:**
    ```bash
-   git clone <repository_url>
+   git clone https://github.com/harsshhan/airman-toga
    cd airman_toga
    ```
 
@@ -116,9 +116,7 @@ The project includes additional documentation under the `docs/` directory:
 
 Application screenshots are available under:
 
-```text
-screenshots/
-```
+[Screenshots](./screenshots)
 
 
 ---
@@ -127,9 +125,7 @@ screenshots/
 
 A complete walkthrough of the application flow and functionality is available below:
 
-🎥 [Watch App Walkthrough](./screenshots/AIRMAN_VIdeo.mov)
-
-If GitHub does not render the video preview directly, download the file locally.
+🎥 [Watch App Walkthrough](https://drive.google.com/file/d/1POw48CIyzYKaieTXiGRiuVXr4_WDHYZa/view?usp=sharing)
 
 ---
 
