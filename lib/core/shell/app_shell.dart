@@ -11,12 +11,16 @@ class AppShell extends StatefulWidget {
   const AppShell({super.key});
 
   @override
-  State<AppShell> createState() => _AppShellState();
+  State<AppShell> createState() => AppShellState();
 }
 
-class _AppShellState extends State<AppShell> {
-
+class AppShellState extends State<AppShell> {
   int _currentIndex = 0;
+
+  void setIndex(int index) {
+    if (index == _currentIndex) return;
+    setState(() => _currentIndex = index);
+  }
 
   final List<Widget> _screens = const [
     DashboardScreen(),
@@ -27,8 +31,7 @@ class _AppShellState extends State<AppShell> {
   ];
 
   void _onNavTap(int index) {
-    if (index == _currentIndex) return;
-    setState(() => _currentIndex = index);
+    setIndex(index);
   }
 
   @override

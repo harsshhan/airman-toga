@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'package:airman_toga/features/auth/data/model/cadet_profile.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -32,9 +33,8 @@ class LocalStorage {
     final prefs =
         await SharedPreferences.getInstance();
 
-    await prefs.remove(
-      _isLoggedInKey,
-    );
+    await prefs.remove(_isLoggedInKey);
+    await prefs.remove("cadet_profile");
   }
 
   Future<void> saveCadetProfile(CadetProfile user) async {
@@ -43,9 +43,19 @@ class LocalStorage {
 
       await prefs.setString(
         "cadet_profile",
-        user.toJson().toString(),
+        jsonEncode(user.toJson()),
       );
   }
 
-
+  Future<CadetProfile?> getCadetProfile() async {
+    final prefs = await SharedPreferences.getInstance();
+    final profileStr = prefs.getString("cadet_profile");
+    if (profileStr == null) return null;
+    try {
+      final Map<String, dynamic> jsonMap = jsonDecode(profileStr) as Map<String, dynamic>;
+      return CadetProfile.fromJson(jsonMap);
+    } catch (e) {
+      return null;
+    }
+  }
 }

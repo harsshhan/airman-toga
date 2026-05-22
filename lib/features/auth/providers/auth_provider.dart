@@ -40,4 +40,30 @@ class AuthProvider
 
     notifyListeners();
   }
+
+  Future<void> checkLoginStatus() async {
+    try {
+      final loggedIn = await repository.localStorage.isLoggedIn();
+      if (loggedIn) {
+        currentUser = await repository.localStorage.getCadetProfile();
+        notifyListeners();
+      }
+    } catch (e) {
+      error = "Failed to load session";
+    }
+  }
+
+  Future<void> logout() async {
+    try {
+      isLoading = true;
+      notifyListeners();
+      await repository.logout();
+      currentUser = null;
+    } catch (e) {
+      error = "Logout failed";
+    } finally {
+      isLoading = false;
+      notifyListeners();
+    }
+  }
 }

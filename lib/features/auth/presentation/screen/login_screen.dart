@@ -6,8 +6,27 @@ import 'package:provider/provider.dart';
 
 import '../../providers/auth_provider.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
+
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      final authProvider = context.read<AuthProvider>();
+      await authProvider.checkLoginStatus();
+      if (authProvider.currentUser != null) {
+        if (mounted) {
+          Navigator.pushReplacementNamed(context, "/shell");
+        }
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {

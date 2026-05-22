@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../core/theme/app_colors.dart';
+import '../../../../core/shell/app_shell.dart';
 import '../../provider/dashboard_provider.dart';
 import '../widgets/continue_study_button.dart';
 import '../widgets/dashboard_header_widget.dart';
@@ -116,7 +117,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                   children: [
                     StudyProgressCard(
                       data: data,
-                      onTap: () {},
+                      onTap: () => context.findAncestorStateOfType<AppShellState>()?.setIndex(1),
                     ),
 
                     const SizedBox(height: 14),
@@ -138,7 +139,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
 
                     LogbookPreviewCard(
                       logbook: data.logbook,
-                      onViewAll: () {},
+                      onViewAll: () => context.findAncestorStateOfType<AppShellState>()?.setIndex(3),
                     ),
 
                     const SizedBox(height: 14),
@@ -146,13 +147,13 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     NotificationsCard(
                       unreadCount: 3,
                       subtitle: 'Flight reminder · Instructor feedback',
-                      onTap: () {},
+                      onTap: () => context.findAncestorStateOfType<AppShellState>()?.setIndex(4),
                     ),
 
                     const SizedBox(height: 20),
 
                     ContinueStudyButton(
-                      onPressed: () {},
+                      onPressed: () => context.findAncestorStateOfType<AppShellState>()?.setIndex(1),
                     ),
                   ],
                 ),

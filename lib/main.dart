@@ -24,8 +24,8 @@ import 'features/study/provider/study_provider.dart';
 import 'features/notes/data/model/study_note.dart';
 import 'features/notes/data/model/sync_status.dart';
 import 'features/notes/data/repository/notes_repository.dart';
-import 'features/notes/data/local/notes_hive_service.dart';
-import 'features/notes/data/remote/notes_api_service.dart';
+import 'features/notes/data/service/notes_hive_service.dart';
+import 'features/notes/data/service/notes_api_service.dart';
 import 'features/notes/provider/notes_provider.dart';
 
 void main() async {
