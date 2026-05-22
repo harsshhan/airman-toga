@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import 'core/shell/app_shell.dart';
 import 'core/storage/local_storage.dart';
 import 'core/theme/app_theme.dart';
 import 'features/auth/data/repository/auth_repository.dart';
 import 'features/auth/data/services/auth_service.dart';
 import 'features/auth/presentation/screen/login_screen.dart';
 import 'features/auth/providers/auth_provider.dart';
-import 'features/dashboard/presentation/screen/dashboard_screen.dart';
+import 'features/dashboard/data/repository/dashboard_repository.dart';
+import 'features/dashboard/data/service/dashboard_service.dart';
+import 'features/dashboard/provider/dashboard_provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -34,6 +37,14 @@ class MyApp extends StatelessWidget {
             ),
           ),
         ),
+
+        ChangeNotifierProvider(
+          create: (_) => DashboardProvider(
+            repository: DashboardRepository(
+              dashboardService: DashboardService(),
+            ),
+          ),
+        ),
       ],
 
       child: MaterialApp(
@@ -51,7 +62,7 @@ class MyApp extends StatelessWidget {
         routes: {
           "/": (context) => const LoginScreen(),
 
-          "/dashboard": (context) => const DashboardScreen(),
+          "/shell": (context) => const AppShell(),
         },
       ),
     );

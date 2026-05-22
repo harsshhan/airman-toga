@@ -25,17 +25,28 @@ class LoginScreen extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Icon(Icons.flight,size: 30,color: AppColors.secondary,),
+                Icon(Icons.flight, size: 30, color: AppColors.secondary),
                 const Text(
                   "TOGA",
-                  style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold, color: AppColors.textwhite),
+                  style: TextStyle(
+                    fontSize: 32,
+                    fontWeight: FontWeight.bold,
+                    color: AppColors.textwhite,
+                  ),
                 ),
               ],
             ),
-            const SizedBox(height: 5,),
-            
 
-            const Text("AI PILOT LEARNING & TRAINING",style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500, color: AppColors.textHint)),
+            const SizedBox(height: 5),
+
+            const Text(
+              "AI PILOT LEARNING & TRAINING",
+              style: TextStyle(
+                fontSize: 14,
+                fontWeight: FontWeight.w500,
+                color: AppColors.textHint,
+              ),
+            ),
 
             const SizedBox(height: 24),
 
@@ -48,11 +59,13 @@ class LoginScreen extends StatelessWidget {
                 if (!context.mounted) return;
 
                 if (authProvider.currentUser != null) {
-                  Navigator.pushReplacementNamed(context, "/dashboard");
+                  Navigator.pushReplacementNamed(context, "/shell");
                 } else {
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
-                      content: Text(authProvider.error ?? "Login failed"),
+                      content: Text(
+                        authProvider.error ?? 'Login failed',
+                      ),
                     ),
                   );
                 }
