@@ -4,6 +4,9 @@ import 'package:provider/provider.dart';
 import 'core/shell/app_shell.dart';
 import 'core/storage/local_storage.dart';
 import 'core/theme/app_theme.dart';
+import 'features/alerts/data/repository/alerts_repository.dart';
+import 'features/alerts/data/service/alerts_service.dart';
+import 'features/alerts/provider/alerts_provider.dart';
 import 'features/auth/data/repository/auth_repository.dart';
 import 'features/auth/data/services/auth_service.dart';
 import 'features/auth/presentation/screen/login_screen.dart';
@@ -11,6 +14,9 @@ import 'features/auth/providers/auth_provider.dart';
 import 'features/dashboard/data/repository/dashboard_repository.dart';
 import 'features/dashboard/data/service/dashboard_service.dart';
 import 'features/dashboard/provider/dashboard_provider.dart';
+import 'features/logbook/data/repository/logbook_repository.dart';
+import 'features/logbook/data/service/logbook_service.dart';
+import 'features/logbook/provider/logbook_provider.dart';
 import 'features/study/data/repository/study_repository.dart';
 import 'features/study/data/service/study_service.dart';
 import 'features/study/provider/study_provider.dart';
@@ -53,6 +59,22 @@ class MyApp extends StatelessWidget {
           create: (_) => StudyProvider(
             repository: StudyRepository(
               studyService: StudyService(),
+            ),
+          ),
+        ),
+
+        ChangeNotifierProvider(
+          create: (_) => LogbookProvider(
+            repository: LogbookRepository(
+              logbookService: LogbookService(),
+            ),
+          ),
+        ),
+
+        ChangeNotifierProvider(
+          create: (_) => AlertsProvider(
+            repository: AlertsRepository(
+              alertsService: AlertsService(),
             ),
           ),
         ),
