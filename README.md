@@ -27,7 +27,6 @@ The project uses a clean, high-performance, and lightweight dependency architect
 * **State Management:** [Provider](https://pub.dev/packages/provider) — Leverages reactive `ChangeNotifier` bindings to separate UI rendering from business logic.
 * **Local Structured Database:** [Hive](https://pub.dev/packages/hive) & [Hive Flutter](https://pub.dev/packages/hive_flutter) — A super-fast, binary key-value database used to store note drafts locally with auto-generated type adapters.
 * **Local Session Persistence:** [SharedPreferences](https://pub.dev/packages/shared_preferences) — Retains Cadet profiles and authentication metadata across application lifecycle restarts.
-* **HTTP Networking Client:** [Dio](https://pub.dev/packages/dio) — Configured for robust HTTP communication, custom interceptors (JWT header attachment), error mapping, and timeout thresholds.
 
 ---
 
@@ -41,7 +40,6 @@ lib/
 │   ├── mock_data/      # Structured local data mock sets
 │   ├── storage/        # Shared LocalStorage (SharedPreferences) wrappers
 │   ├── theme/          # Custom uniform UI design systems and colors
-│   └── network/        # Global network clients and interceptors (Dio configurations)
 └── features/
     ├── alerts/         # Notification management and tab navigation hooks
     ├── auth/           # Secure cadet authentication and local session storage
